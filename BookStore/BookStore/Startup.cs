@@ -32,7 +32,21 @@ namespace BookStore
             {
                 endpoints.MapGet("/", async context =>
                 {
-                    await context.Response.WriteAsync("Hello World!</br>");
+                    await context.Response.WriteAsync("Hello World!</br>" + env.EnvironmentName + "</br>");
+                    if (env.IsDevelopment())
+                    {
+                        await context.Response.WriteAsync("Hello developer");
+                    }
+                    else if (env.IsProduction())
+                    {
+                        await context.Response.WriteAsync("Hello production");
+                    }
+                    else if (env.IsStaging())
+                    {
+                        await context.Response.WriteAsync("Hello staging");
+                    }
+                    else
+                        await context.Response.WriteAsync("Unknown");
                 });
             });
 
@@ -40,7 +54,7 @@ namespace BookStore
             {
                 endpoints.MapGet("/ruddor", async context =>
                 {
-                    await context.Response.WriteAsync("Hello Ruddor!</br>");
+                    await context.Response.WriteAsync("Hello Ruddor!</br>" + env.EnvironmentName);
                 });
             });
         }
