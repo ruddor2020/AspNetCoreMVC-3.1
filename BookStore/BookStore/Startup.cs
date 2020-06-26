@@ -16,6 +16,9 @@ namespace BookStore
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddMvc();
+            //services.AddControllers() // web api only
+            services.AddControllersWithViews();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -30,33 +33,34 @@ namespace BookStore
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Hello World!</br>" + env.EnvironmentName + "</br>");
-                    if (env.IsDevelopment())
-                    {
-                        await context.Response.WriteAsync("Hello developer");
-                    }
-                    else if (env.IsProduction())
-                    {
-                        await context.Response.WriteAsync("Hello production");
-                    }
-                    else if (env.IsStaging())
-                    {
-                        await context.Response.WriteAsync("Hello staging");
-                    }
-                    else
-                        await context.Response.WriteAsync("Unknown");
-                });
+                //endpoints.MapGet("/", async context =>
+                //{
+                //    await context.Response.WriteAsync("Hello World!</br>" + env.EnvironmentName + "</br>");
+                //    if (env.IsDevelopment())
+                //    {
+                //        await context.Response.WriteAsync("Hello developer");
+                //    }
+                //    else if (env.IsProduction())
+                //    {
+                //        await context.Response.WriteAsync("Hello production");
+                //    }
+                //    else if (env.IsStaging())
+                //    {
+                //        await context.Response.WriteAsync("Hello staging");
+                //    }
+                //    else
+                //        await context.Response.WriteAsync("Unknown");
+                //});
+                endpoints.MapDefaultControllerRoute();
             });
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapGet("/ruddor", async context =>
-                {
-                    await context.Response.WriteAsync("Hello Ruddor!</br>" + env.EnvironmentName);
-                });
-            });
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapGet("/ruddor", async context =>
+            //    {
+            //        await context.Response.WriteAsync("Hello Ruddor!</br>" + env.EnvironmentName);
+            //    });
+            //});
         }
     }
 }
