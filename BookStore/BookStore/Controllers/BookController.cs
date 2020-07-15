@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BookStore.Models;
+using BookStore.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BookStore.Controllers
@@ -12,20 +14,26 @@ namespace BookStore.Controllers
         //{
         //    return View();
         //}
-
-        public string GetAllBooks()
+        private readonly BookRepository _bookRepository = null;
+        public BookController()
         {
-            return "All books";
+            _bookRepository = new BookRepository();
         }
 
-        public string GetBook(int id)
+        public ViewResult GetAllBooks()
         {
-            return $"book with id: {id}";
+            var data = _bookRepository.GetAllBooks();
+            return View(data);
         }
 
-        public string SearchBook(string bookName, string authorName)
+        public BookModel GetBook(int id)
         {
-            return $"book with name: {bookName}, author: {authorName}";
+            return _bookRepository.GetBookById(id);
+        }
+
+        public List<BookModel> SearchBook(string bookName, string authorName)
+        {
+            return _bookRepository.SearchBook(bookName, authorName);
         }
     }
 }
