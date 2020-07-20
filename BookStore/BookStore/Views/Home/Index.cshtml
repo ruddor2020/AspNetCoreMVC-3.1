@@ -1,28 +1,79 @@
 ﻿
 @{
-    Layout = null;
+    Layout = "_Layout";
 }
 
-<!DOCTYPE html>
+<section class="jumbotron text-center" style="background:none;">
+    <div class="container">
+        <h1>Welcome to book store</h1>
+        <p class="lead text-muted">
+            Protesters outside the federal courthouse in Portland, Oregon were targeted with tear gas by federal officers for the second night in a row Sunday, reports the CBS affiliate there, KOIN-TV. It marked  the 52nd straight night of protests in the city against police violence and for racial justice.
+        </p>
+        <p>
+            <a href="#" class="btn btn-primary my-4">Search books</a>
+        </p>
+    </div>
+</section>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
-    <link href="~/css/Site.css" rel="stylesheet" />
-</head>
-<body class="container">
-    <img class="logo" src="~/images/apple.png" alt="logo" />
-    <img src="~/MyStaticFiles/Niki.png" alt="Niki" />
-    <h1 class="h1">Welcome to book store app</h1>
-    <p>@DateTime.Now.ToString("MM/dd/yyyy") home page</p>
-    <hr />
-    <br />
-    <input type="button" value="Click me" class="btn btn-danger" />
-</body>
-<script src="~/lib/jquery/jquery.js"></script>
-</html>
+<div class="py-5 bg-light">
+    <div class="container">
+        <h3>Top Books</h3>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg">
+                        <rect fill="#ddd" width="100%" height="225" />
+                        <text fill="rgba(0,0,0,0.5)" font-family="sans-serif" font-size="30" dy="10.5" font-weight="bold" x="50%" y="50%" text-anchor="middle">100%x225</text>
+                    </svg>
+                    <div class="card-body">
+                        <p class="card-text">this section will be used to display the short description of book</p>
+                        <div class="d-flex justify-content-between align-item-center">
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-sm btn-outline-secondary">View Details</a>
+                            </div>
+                            <small class="text-muted">Author name</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg">
+                        <rect fill="#ddd" width="100%" height="225" />
+                        <text fill="rgba(0,0,0,0.5)" font-family="sans-serif" font-size="30" dy="10.5" font-weight="bold" x="50%" y="50%" text-anchor="middle">100%x225</text>
+                    </svg>
+                    <div class="card-body">
+                        <p class="card-text">this section will be used to display the short description of book</p>
+                        <div class="d-flex justify-content-between align-item-center">
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-sm btn-outline-secondary">View Details</a>
+                            </div>
+                            <small class="text-muted">Author name</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg">
+                        <rect fill="#ddd" width="100%" height="225" />
+                        <text fill="rgba(0,0,0,0.5)" font-family="sans-serif" font-size="30" dy="10.5" font-weight="bold" x="50%" y="50%" text-anchor="middle">100%x225</text>
+                    </svg>
+                    <div class="card-body">
+                        <p class="card-text">this section will be used to display the short description of book</p>
+                        <div class="d-flex justify-content-between align-item-center">
+                            <div class="btn-group">
+                                <a href="#" class="btn btn-sm btn-outline-secondary">View Details</a>
+                            </div>
+                            <small class="text-muted">Author name</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
     $(document).ready(function () {
         //alert("Page loaded!");
