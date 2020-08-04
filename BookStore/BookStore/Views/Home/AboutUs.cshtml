@@ -3,8 +3,17 @@
     Layout = "_Layout";
 }
 
-    <div class="text-center">
-        <h1>This is page About us</h1>
-    </div>
+@section breadcrumb {
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Page 1</a></li>
+            <li class="breadcrumb-item active" aria-current="page">About us</li>
+        </ol>
+    </nav>
+}
+<div class="text-center">
+    <h1>This is page About us</h1>
+</div>
 
 

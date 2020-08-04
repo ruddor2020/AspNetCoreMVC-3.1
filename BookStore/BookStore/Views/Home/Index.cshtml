@@ -3,6 +3,15 @@
     Layout = "_Layout";
 }
 
+@section breadcrumb {
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">Page 1</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Index</li>
+        </ol>
+    </nav>
+}
 <section class="jumbotron text-center" style="background:none;">
     <div class="container">
         <h1>Welcome to book store</h1>
@@ -73,8 +82,12 @@
     </div>
 </div>
 
-<script>
-    $(document).ready(function () {
-        //alert("Page loaded!");
-    });
-</script>
+@section scripts{
+    <script>
+                //$(document).ready(function () {
+                //    alert("Page loaded!");
+                //});
+    </script>
+}
+
+
