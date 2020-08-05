@@ -35,8 +35,7 @@
                         <p class="card-text">@book.Description</p>
                         <div class="d-flex justify-content-between align-item-center">
                             <div class="btn-group">
-                                <a asp-controller="book" 
-                                   asp-action="getbook" 
+                                <a asp-route="bookDetailRoute"
                                    asp-route-id="@book.Id" 
                                    asp-route-nameOfBook="@book.Title"
                                    asp-fragment="similarBooks"
