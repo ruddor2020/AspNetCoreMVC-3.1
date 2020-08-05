@@ -32,6 +32,14 @@ namespace BookStore.Controllers
             return View(data);
         }
 
+        public ViewResult GetDynamicBook(int id)
+        {
+            dynamic data = new System.Dynamic.ExpandoObject();
+            data.Book = _bookRepository.GetBookById(id);
+            data.Name = "Ruddor";
+            return View(data);
+        }
+
         public List<BookModel> SearchBook(string bookName, string authorName)
         {
             return _bookRepository.SearchBook(bookName, authorName);
