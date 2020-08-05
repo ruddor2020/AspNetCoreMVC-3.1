@@ -2,6 +2,12 @@
 @{
     //Layout = "_Layout";
     ViewData["Title"] = "Get All Books";
+    var parameters = new Dictionary<string, string>()
+    {
+        {"name", "Ruddor" },
+        {"company", "Ruddor Corp" },
+        {"appName", "Book Store" }
+    };
 }
 
 @section breadcrumb {
@@ -29,7 +35,12 @@
                         <p class="card-text">@book.Description</p>
                         <div class="d-flex justify-content-between align-item-center">
                             <div class="btn-group">
-                                <a href="/book/getbook/@book.Id" class="btn btn-sm btn-outline-secondary">View Details</a>
+                                <a asp-controller="book" 
+                                   asp-action="getbook" 
+                                   asp-route-id="@book.Id" 
+                                   asp-route-nameOfBook="@book.Title"
+                                   asp-fragment="similarBooks"
+                                   class="btn btn-sm btn-outline-secondary">View Details</a>
                             </div>
                             <small class="text-muted">@book.Author</small>
                         </div>
