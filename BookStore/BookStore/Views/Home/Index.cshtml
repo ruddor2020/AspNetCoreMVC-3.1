@@ -1,6 +1,9 @@
 ﻿
 @{
-//Layout = "_Layout";
+    //Layout = "_Layout";
+    dynamic data = ViewBag.Data;
+    var book = ViewData["Book"] as BookModel;
+    ViewData["Title"] = "Home";
 }
 
 @section breadcrumb {
@@ -14,8 +17,14 @@
 }
 <section class="jumbotron text-center" style="background:none;">
     <div class="container">
-        <h1>Welcome to book store</h1>
+        <h1>Welcome to book store @ViewBag.Title</h1>
         <p class="lead text-muted">
+            @data.Id @data.Name<br/>
+            Id = @ViewBag.Type.Id<br/>
+            Name = @ViewBag.Type.Author<br/>
+            @ViewData["Description"]<br/>
+            Book Id = @book.Id<br/>
+            Book Author = @book.Author<br/>
             Protesters outside the federal courthouse in Portland, Oregon were targeted with tear gas by federal officers for the second night in a row Sunday, reports the CBS affiliate there, KOIN-TV. It marked  the 52nd straight night of protests in the city against police violence and for racial justice.
         </p>
         <p>
