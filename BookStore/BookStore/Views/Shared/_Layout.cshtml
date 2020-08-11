@@ -4,7 +4,20 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewData["Title"] | Book Store App </title>
-    <link href="~/lib/twitter-bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <environment include="Development">
+        <link rel="stylesheet"
+              href="http://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/twitter-bootstrap/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only"
+              asp-fallback-test-property="position"
+              asp-fallback-test-value="absolute"
+              integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+              crossorigin="anonymous">
+    </environment>
+    <environment exclude="Development">
+        <link href="~/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    </environment>
+
     <link href="~/css/Site.css" rel="stylesheet" />
 </head>
 <body>
@@ -12,7 +25,7 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-controller="home" asp-action="index">
-                    <img src="~/images/apple.png" width="130" height="100" />
+                    <img src="~/images/apple.png" asp-append-version="true" width="130" height="100" />
                     Book Store
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,8 +51,11 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Book" asp-action="GetAllBooks">All Books</a>
                         </li>
+                        @*<li class="nav-item">
+                            <a class="nav-link text-dark" asp-protocol="http" asp-host="microsoft.com" asp-controller="Book" asp-action="GetAllBooks">Host Link</a>
+                        </li>*@
                         <li class="nav-item">
-                            <a class="nav-link text-dark"asp-protocol="http" asp-host="microsoft.com" asp-controller="Book" asp-action="GetAllBooks">Host Link</a>
+                            <a class="nav-link text-dark" asp-controller="Book" asp-action="AddNewBook">Add New Book</a>
                         </li>
                     </ul>
                 </div>

@@ -18,13 +18,20 @@
 <section class="jumbotron text-center" style="background:none;">
     <div class="container">
         <h1>Welcome to book store @ViewBag.Title</h1>
+        <environment names="Development">
+            <h3>Development</h3>
+        </environment>
+        <environment include="Production, Staging">
+            <h3>Production, Staging</h3>
+        </environment>
+
         <p class="lead text-muted">
-            @data.Id @data.Name<br/>
-            Id = @ViewBag.Type.Id<br/>
-            Name = @ViewBag.Type.Author<br/>
-            @ViewData["Description"]<br/>
-            Book Id = @book.Id<br/>
-            Book Author = @book.Author<br/>
+            @data.Id @data.Name<br />
+            Id = @ViewBag.Type.Id<br />
+            Name = @ViewBag.Type.Author<br />
+            @ViewData["Description"]<br />
+            Book Id = @book.Id<br />
+            Book Author = @book.Author<br />
             Protesters outside the federal courthouse in Portland, Oregon were targeted with tear gas by federal officers for the second night in a row Sunday, reports the CBS affiliate there, KOIN-TV. It marked  the 52nd straight night of protests in the city against police violence and for racial justice.
         </p>
         <p>
