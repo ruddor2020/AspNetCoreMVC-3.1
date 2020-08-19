@@ -15,28 +15,30 @@ namespace BookStore.Controllers
         //    return View();
         //}
         private readonly BookRepository _bookRepository = null;
-        public BookController()
+        public BookController(BookRepository bookRepository)
         {
-            _bookRepository = new BookRepository();
+            _bookRepository = bookRepository;
         }
 
-        public ViewResult GetAllBooks()
+        public async Task<ViewResult> GetAllBooks()
         {
-            var data = _bookRepository.GetAllBooks();
+            var data = await _bookRepository.GetAllBooksAsync();
             return View(data);
         }
 
-        [Route("book-details/{id}/{nameOfBook}", Name = "bookDetailRoute")]
-        public ViewResult GetBook(int id, string nameOfBook)
+        //[Route("book-details/{id}/{nameOfBook}", Name = "bookDetailRoute")]
+        //public ViewResult GetBook(int id, string nameOfBook)
+        [Route("book-details/{id}", Name = "bookDetailRoute")]
+        public async Task<ViewResult> GetBook(int id)
         {
-            var data = _bookRepository.GetBookById(id);
+            var data = await _bookRepository.GetBookByIdAsync(id);
             return View(data);
         }
 
-        public ViewResult GetDynamicBook(int id)
+        public async Task<ViewResult> GetDynamicBook(int id)
         {
             dynamic data = new System.Dynamic.ExpandoObject();
-            data.Book = _bookRepository.GetBookById(id);
+            data.Book = await _bookRepository.GetBookByIdAsync(id);
             data.Name = "Ruddor";
             return View(data);
         }
@@ -46,22 +48,32 @@ namespace BookStore.Controllers
             return _bookRepository.SearchBook(bookName, authorName);
         }
 
-        public ViewResult AddNewBook()
+        public ViewResult AddNewBook(bool isSuccess=false, int bookId = 0)
         {
+            ViewBag.IsSuccess = isSuccess;
+            ViewBag.BookId = bookId;
             return View();
         }
         [HttpPost]
-        public ViewResult AddNewBook(BookModel bookModel)
+        public async Task<IActionResult> AddNewBook(BookModel bookModel)
         {
             if (!ModelState.IsValid)
             {
+                ViewBag.IsSuccess = false;
+                ViewBag.BookId = 0;
+                ModelState.AddModelError("", "This is first custom error for demo.");
+                ModelState.AddModelError("", "This is second custom error for demo.");
                 return View();
             }
-            else
+            if(ModelState.IsValid)
             {
-                return View();
+                int id = await _bookRepository.AddNewBook(bookModel);
+                if (id > 0)
+                {
+                    return RedirectToAction(nameof(AddNewBook), new { isSuccess = true, bookId = id });
+                }
             }
-            
+            return View();
         }
     }
 }
