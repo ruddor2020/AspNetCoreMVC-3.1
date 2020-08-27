@@ -51,11 +51,11 @@ namespace BookStore.Controllers
 
         public ViewResult AddNewBook(bool isSuccess=false, int bookId = 0)
         {
-            var model = new BookModel() { Language = "English" };
+            //var model = new BookModel() { Language = "English" };
             ViewBag.Language = new SelectList(GetLanguage(), "Id", "Text");
             ViewBag.IsSuccess = isSuccess;
             ViewBag.BookId = bookId;
-            return View(model);
+            return View();
         }
         [HttpPost]
         public async Task<IActionResult> AddNewBook(BookModel bookModel)
