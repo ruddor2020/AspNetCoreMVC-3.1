@@ -38,11 +38,11 @@
         </div>
         <div class="form-group">
             <label asp-for="Language"></label>
-            <select asp-for="Language" class="form-control">
-                <option value="">Please select a language</option>
+            <select asp-for="Language" class="form-control" asp-items="new SelectList(ViewBag.Language)">
+                @*<option value="">Please select a language</option>
                 <option selected value="English">English (Global language)</option>
                 <option value="Franch">Franch (Popular language)</option>
-                <option value="Spanish">Spanish (Top language)</option>
+                <option value="Spanish">Spanish (Top language)</option>*@
             </select>
             <span asp-validation-for="Language" class="text-danger"></span>
         </div>

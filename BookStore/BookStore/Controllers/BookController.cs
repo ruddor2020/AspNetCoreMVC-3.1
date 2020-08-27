@@ -50,6 +50,7 @@ namespace BookStore.Controllers
 
         public ViewResult AddNewBook(bool isSuccess=false, int bookId = 0)
         {
+            ViewBag.Language = new List<string>() { "Hindi", "English", "Dutch" };
             ViewBag.IsSuccess = isSuccess;
             ViewBag.BookId = bookId;
             return View();
