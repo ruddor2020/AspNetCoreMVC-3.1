@@ -1,6 +1,7 @@
 ﻿@model BookModel
 @{ 
     ViewData["Title"] = "Add new book";
+    string selectedValue = "Dutch";
 }
 <form method="post" asp-action="AddNewBook" asp-controller="Book">
     <div class="container">
@@ -38,11 +39,12 @@
         </div>
         <div class="form-group">
             <label asp-for="Language"></label>
-            <select asp-for="Language" class="form-control" asp-items="new SelectList(ViewBag.Language)">
+            <select asp-for="Language" class="form-control" asp-items="new SelectList(ViewBag.Language, selectedValue)">
+                <option value="">Please select a language</option>
                 @*<option value="">Please select a language</option>
-                <option selected value="English">English (Global language)</option>
-                <option value="Franch">Franch (Popular language)</option>
-                <option value="Spanish">Spanish (Top language)</option>*@
+        <option selected value="English">English (Global language)</option>
+        <option value="Franch">Franch (Popular language)</option>
+        <option value="Spanish">Spanish (Top language)</option>*@
             </select>
             <span asp-validation-for="Language" class="text-danger"></span>
         </div>

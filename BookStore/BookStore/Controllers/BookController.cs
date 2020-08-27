@@ -57,16 +57,18 @@ namespace BookStore.Controllers
         }
         [HttpPost]
         public async Task<IActionResult> AddNewBook(BookModel bookModel)
-        {
+        {            
+            ViewBag.Language = new List<string>() { "Hindi", "English", "Dutch" };
             if (!ModelState.IsValid)
             {
                 ViewBag.IsSuccess = false;
                 ViewBag.BookId = 0;
                 ModelState.AddModelError("", "This is first custom error for demo.");
                 ModelState.AddModelError("", "This is second custom error for demo.");
+
                 return View();
             }
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 int id = await _bookRepository.AddNewBook(bookModel);
                 if (id > 0)
