@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BookStore.Models;
 using BookStore.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BookStore.Controllers
 {
@@ -50,15 +51,16 @@ namespace BookStore.Controllers
 
         public ViewResult AddNewBook(bool isSuccess=false, int bookId = 0)
         {
-            ViewBag.Language = new List<string>() { "Hindi", "English", "Dutch" };
+            var model = new BookModel() { Language = "English" };
+            ViewBag.Language = new SelectList(new List<string>() { "Hindi", "English", "Dutch" });
             ViewBag.IsSuccess = isSuccess;
             ViewBag.BookId = bookId;
-            return View();
+            return View(model);
         }
         [HttpPost]
         public async Task<IActionResult> AddNewBook(BookModel bookModel)
-        {            
-            ViewBag.Language = new List<string>() { "Hindi", "English", "Dutch" };
+        {
+            ViewBag.Language = new SelectList(new List<string>() { "Hindi", "English", "Dutch" });
             if (!ModelState.IsValid)
             {
                 ViewBag.IsSuccess = false;

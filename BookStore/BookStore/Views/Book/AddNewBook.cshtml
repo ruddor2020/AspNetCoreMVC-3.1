@@ -39,7 +39,7 @@
         </div>
         <div class="form-group">
             <label asp-for="Language"></label>
-            <select asp-for="Language" class="form-control" asp-items="new SelectList(ViewBag.Language, selectedValue)">
+            <select asp-for="Language" class="form-control" asp-items="@ViewBag.Language">
                 <option value="">Please select a language</option>
                 @*<option value="">Please select a language</option>
         <option selected value="English">English (Global language)</option>
